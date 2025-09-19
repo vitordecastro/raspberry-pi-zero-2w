@@ -23,3 +23,15 @@
     https://github.com/raspberrypi/firmware/tree/master/boot
 
     To compile it, just run "make" on timer_blinker01 directory.
+
+/watchdog:
+
+    This directory contains a bare metal code that starts the chip's watchdog as example.
+    To run the code on your raspberry pi zero 2W, you need to format the SD as FAT32 and add the following files:
+    
+    kernel8.img
+
+    The "bootcode.bin" and "start.elf" were obtained from raspberry pi official repository:
+    https://github.com/raspberrypi/firmware/tree/master/boot
+
+    To compile it, just run "make" on watchdog directory.
