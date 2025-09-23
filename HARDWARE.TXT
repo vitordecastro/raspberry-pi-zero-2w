@@ -1,0 +1,31 @@
+| Register name | Offset | Purpose                                |
+| ------------- | ------ | -------------------------------------- |
+| GPFSEL0       | `0x00` | Function select bits for GPIO pins 0-9 |
+| GPFSEL1       | `0x04` | Function select for GPIO pins 10-19    |
+| GPFSEL2       | `0x08` | Function select for GPIO pins 20-29    |
+| GPFSEL3       | `0x0C` | Function select for GPIO pins 30-39    |
+| GPFSEL4       | `0x10` | Function select for GPIO pins 40-49    |
+| GPFSEL5       | `0x14` | Function select for GPIO pins 50-53    |
+| GPSET0        | `0x1C` | Set output high (pins 0-31)            |
+| GPSET1        | `0x20` | Set for pins 32-53                     |
+| GPCLR0        | `0x28` | Clear output (pins 0-31)               |
+| GPCLR1        | `0x2C` | Clear pins 32-53                       |
+| GPLEV0        | `0x34` | Read level (pins 0-31)                 |
+| GPLEV1        | `0x38` | Read level (pins 32-53)                |
+| GPEDS0        | `0x40` | Event detect status (pins 0-31)        |
+| GPEDS1        | `0x44` | Event detect status (pins 32-53)       |
+| GPREN0        | `0x4C` | Rising edge detect enable (0-31)       |
+| GPREN1        | `0x50` | Rising edge detect enable (32-53)      |
+| GPFEN0        | `0x58` | Falling edge detect enable (0-31)      |
+| GPFEN1        | `0x5C` | Falling edge detect enable (32-53)     |
+| GPHEN0        | `0x64` | High detect enable (0-31)              |
+| GPHEN1        | `0x68` | High detect enable (32-53)             |
+| GPLEN0        | `0x70` | Low detect enable (0-31)               |
+| GPLEN1        | `0x74` | Low detect enable (32-53)              |
+| GPAREN0       | `0x7C` | Async rising edge detect (0-31)        |
+| GPAREN1       | `0x80` | Async rising edge detect (32-53)       |
+| GPAFEN0       | `0x88` | Async falling edge detect (0-31)       |
+| GPAFEN1       | `0x8C` | Async falling edge detect (32-53)      |
+| GPPUD         | `0x94` | Pull-up/down control                   |
+| GPPUDCLK0     | `0x98` | Pull-up/down clock for pins 0-31       |
+| GPPUDCLK1     | `0x9C` | Pull-up/down clock for pins 32-53      |
