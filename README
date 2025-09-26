@@ -48,3 +48,22 @@
     https://github.com/raspberrypi/firmware/tree/master/boot
 
     To compile it, just run "make" on uart01 directory.
+
+    To view TX from raspberry, install picocom and run:
+    picocom -b 115200 /dev/tty.usbserial-1120 
+
+/uart02:
+
+    This directory contains a bare metal code that implements a serial communication, RX -> TX and TX -> RX.
+    To run the code on your raspberry pi zero 2W, you need to format the SD as FAT32 and add the following files:
+    
+    config.txt
+    kernel8.img
+
+    The "bootcode.bin" and "start.elf" were obtained from raspberry pi official repository:
+    https://github.com/raspberrypi/firmware/tree/master/boot
+
+    To compile it, just run "make" on uart02 directory.
+
+    To view TX from raspberry, install picocom and run:
+    picocom -b 115200 /dev/tty.usbserial-1120 

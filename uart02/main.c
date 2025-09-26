@@ -13,11 +13,13 @@
 #define UART_IMSC  ((volatile unsigned int*)(UART0_BASE + 0x38))
 #define UART_ICR   ((volatile unsigned int*)(UART0_BASE + 0x44))
 
+#define RXFE        (1 << 4)   // Receive FIFO empty
+
 void uart_init(void) {
     *UART_CR = 0;           // disable UART
     *UART_ICR = 0x7FF;      // clear interrupts
-    *UART_IBRD = 26;        // integer baud - 48 000 000/(16 * 115200) = 26.0416 = 26
-    *UART_FBRD = 3;         // fractional baud = 0.0416 = 3/64 = 3
+    *UART_IBRD = 26;        // integer baud
+    *UART_FBRD = 3;         // fractional baud
     *UART_LCRH = (1 << 4) | (3 << 5); // FIFO enable + 8-bit
     *UART_CR = (1 << 9) | (1 << 8) | (1 << 0); // enable TX, RX, UART
 }
@@ -47,12 +49,30 @@ void uart_puts(const char* s) {
     }
 }
 
+char uart0_getc(void) {
+    // flush any old data first (optional)
+    // while (!(*UART_FR & RXFE)) (void)UART_DR;
+
+    // Wait until data is present
+    while (*UART_FR & RXFE) {
+        // spin
+    }
+    // Read one byte
+    return (char)(*UART_DR & 0xFF);
+}
+
 void main(void) {
     gpio_init_uart();
     uart_init();
     uart_puts("Hello from bare metal!\n");
     while (1) {
-        for(volatile int i=0;i<1000000;i++);
-        uart_puts("Hello from bare metal!\n");
+        unsigned char get = uart0_getc();
+        char buf[2];                 // 1 char + null terminator
+        buf[0] = (char)get;
+        buf[1] = '\0';
+        const char* str = buf;
+        uart_puts(str);
+        uart_puts(str);
+        uart_puts("\nSended\n");
     }
 }
